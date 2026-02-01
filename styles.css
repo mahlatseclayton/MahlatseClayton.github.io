@@ -346,12 +346,11 @@ body{
 #education{
     background-color: white;
     border-radius: 20px;
-    justify-content: center;
+    
     display:flex;
     padding:9px;
     margin:12px;
     flex-wrap: wrap;
-    margin:12px;
     flex-direction: column;
     border: 4px solid #183df2;
 }
@@ -367,6 +366,7 @@ body{
 .eduProfile{
     width: 100px;
     height:100px;
+       margin-left:170px;
     border-radius:25px;
     background-color:white;
 }
@@ -374,17 +374,72 @@ body{
      font-weight: bold;
     color:#183df2;
 }
-.desc{
-     width:300px;
-}
+
 #info{
     display:flex;
     justify-content: space-around;
+    flex:2px;
+    padding:20px;
     overflow: auto;
    
 }
+.edu{
+    width:500px ;
+    overflow: break-word;
+   
+}
+.edu h1{
+    justify-content: center;
+    margin-left:168px;
+}
 #expdesc{
-    width:500px;
+    width:500px auto;
+    overflow: break-word;
+
+}
+#expdesc li{
+    overflow: break-word;
+}
+#aboutDesc{
+    color:white;
+    font-size: large;
+    font-weight: bold;
+}
+#fnameId{
+        color:#183df2;
+        font-size: large;
+        font-weight: bold;
+}
+#aboutId{
+    align-items: center;
+    color:rgb(241, 233, 233);
+}
+#bContainer{
+    display: flex;
+    gap:14px;
+    margin-left: 50px;
+       flex-wrap: wrap;
+
+}
+.btnId{
+    color:white;
+    font-weight: bold;
+    background-color: #183df2;
+    border-radius: 20px;
+    padding:20px;
+ 
+}
+.c{
+    list-style-type: none;
+    
+}
+#lnameId{
+        color:rgb(230, 30, 30);
+    font-size: large;
+    font-weight: bold;
+}
+#main1{
+    background-color: white;;
 }
 @media(max-width:600px){
     #picture{
@@ -399,6 +454,18 @@ body{
     width:350px;
 
 }
+.edu{
+    width: auto;
+    overflow: break-word;
+   
+}
+#expdesc li{
+    overflow: break-word;
+}
+.desc{
+    overflow: break-word;
+}
+
  #contact_links{
         display: flex;
         flex-direction: row; 
@@ -451,6 +518,7 @@ body{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    justify-content: center;
      box-sizing: border-box;
       scroll-behavior: smooth; 
 }
@@ -490,5 +558,20 @@ body{
 }
 #bar{
     overflow: hidden;
+}
+.edu{
+    font-size:12px;
+    overflow: break-word;
+
+}
+.eduProfile{
+    margin-left:140px;
+}
+.edu h1{
+    font-size:20px;
+    margin-left:73;
+}
+#expdesc{
+    overflow: break-word;
 }
 }
