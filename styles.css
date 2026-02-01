@@ -402,45 +402,59 @@ body{
 }
 #aboutDesc{
     color:white;
-    font-size: large;
+    font-size: 22px;
     font-weight: bold;
 }
 #fnameId{
         color:#183df2;
-        font-size: large;
+        font-size: 22px;
         font-weight: bold;
 }
 #aboutId{
     align-items: center;
     color:rgb(241, 233, 233);
+    padding:12px;
+}
+#aboutText{
+    padding:15px;
+    padding-top: 0;
+    margin-top: 0;
 }
 #bContainer{
     display: flex;
     gap:14px;
-    margin-left: 50px;
-       flex-wrap: wrap;
-
+    justify-content: space-around;
+    width: 300px;
 }
 .btnId{
     color:white;
     font-weight: bold;
     background-color: #183df2;
     border-radius: 20px;
-    padding:20px;
+    padding:14px;
+ 
+}
+#skillContainer{
+    
+    justify-content: center;
+    display: flex;
  
 }
 .c{
-    list-style-type: none;
     
+    font-size: 18px;
 }
+#backlist{
+    list-style-type: none;
+
+}
+
 #lnameId{
         color:rgb(230, 30, 30);
-    font-size: large;
+    font-size: 22px;
     font-weight: bold;
 }
-#main1{
-    background-color: white;;
-}
+
 @media(max-width:600px){
     #picture{
     border-radius: 45px;
