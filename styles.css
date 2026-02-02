@@ -708,3 +708,57 @@ body{
     overflow: break-word;
 }
 }
+/* projects page*/
+.projectContainer{
+    width:360px;
+    border: 3px solid #183df2;
+      background-color: aliceblue;
+    border-radius:30px;
+    height:450px;
+    display:flex;
+    margin:20px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.lp{
+    text-decoration: none;
+}
+.projectLogo{
+   
+    border-radius: 15px;
+    height:130px;
+}
+.projectContainer h1{
+    color:#183df2;
+    font-size: 18px;
+}
+.projectContainer p{
+    font-weight: bold;
+    padding:12px;
+}
+#projects{
+    display:flex;
+    margin:20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.liveBtn{
+    width:100px;
+    height:30px;
+    background-color: #183df2;
+    border:2px solid #183df2;
+    border-radius: 20px;
+    color:white;
+    font-weight: bold;
+}
+
+.liveBtn1{
+    width:150px;
+    height:30px;
+       color:white;
+    font-weight: bold;
+     border:2px solid #183df2;
+    background-color: #183df2;
+    border-radius: 20px;
+}

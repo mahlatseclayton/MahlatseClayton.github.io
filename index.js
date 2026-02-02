@@ -7,3 +7,6 @@ function downloadCV(){
 function showContact(){
     window.location.href="contact.html";
 }
+function getUrl(){
+    window.location.href="https://mentormenteeconnect2.web.app/"
+}
