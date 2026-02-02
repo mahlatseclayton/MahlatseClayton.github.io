@@ -99,7 +99,7 @@ I seek entry-level opportunities and collaborations to contribute and grow profe
 I am interested in software development, machine learning, and emerging technologies.
 I value teamwork, creativity, and continuous learning, and aim to connect with like-minded professionals.</p>
      <div id="skillContainer">
-         <div >
+         <div id="blk" >
           <ol id="backlist">
             <li ><strong class="c">Degree  :  </strong> Bsc Computer Science</li>
             <li><strong class="c">Location :  </strong> Johannesburg , South Africa</li>
@@ -108,11 +108,111 @@ I value teamwork, creativity, and continuous learning, and aim to connect with l
             <li><strong class="c">Phone    :  </strong> +27 75 283 0167</li>
         </ol>
              <div id="bContainer">
-                    <div class="btnId">Contact Me</div>
-                    <div class="btnId">Download CV</div>
+                    <div onclick="showContact()" class="btnId">Contact Me</div>
+                    <div onclick="downloadCV()" class="btnId">Download CV</div>
                 </div>
       <!-- bars of skills -->
+       
             </div>
+              <div id="holderId">
+                <p id="overId">Skills Overview</p>
+            <div class="elementId">
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">Flutter</p>
+                     <p class="pId">78%</p></div>
+                    <div class="line2">
+                    <div id="line1" class="line"></div></div>
+                     </div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">HTML</p>
+                     <p class="pId">80%</p></div>
+                  <div class="line2">
+                    <div id="line3" class="line"></div></div></div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">CSS</p>
+                     <p class="pId">69%</p></div>
+<div class="line2">
+                    <div id="line4" class="line"></div></div>
+                     </div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">Javascipt</p>
+                     <p class="pId">49%</p></div>
+                  <div class="line2">
+                    <div id="line5" class="line"></div></div></div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">Python</p>
+                     <p class="pId">75%</p></div>
+                    <div class="line2">
+                    <div id="line6" class="line"></div></div></div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">C#</p>
+                     <p class="pId">76%%</p></div>
+                    <div class="line2">
+                    <div id="line7" class="line"></div></div></div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">C++</p>
+                     <p class="pId">65%</p></div>
+                    <div class="line2">
+                    <div id="line8" class="line"></div></div></div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">SQL</p>
+                     <p class="pId">90%</p></div>
+                    <div class="line2">
+                    <div id="line9" class="line"></div></div></div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                        <p class="pId">Cloud Services</p>
+                     <p class="pId">60%</p>
+                    </div>
+                    <div class="line2">
+                    <div id="line10" class="line"></div></div>
+                    </div>
+                    
+                </div>
+                 <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">JAVA</p>
+                     <p class="pId">69%</p></div>
+<div class="line2">
+                    <div id="line4" class="line"></div></div>
+                     </div>
+                </div>
+                <div class="percentageId">
+                    <div class="combo">
+                    <div class="pId1">
+                    <p class="pId">PHP</p>
+                     <p class="pId">46%</p></div>
+                     <div class="line2">
+                    <div id="line11" class="line"></div></div></div>
+                </div>
+            </div>
+         </div>
      </div>
 </div>
         <div id="info">
@@ -135,7 +235,7 @@ I value teamwork, creativity, and continuous learning, and aim to connect with l
                 
                 <p class="nd">Wits University – BSc Computer Science</p>
                 <p class="period">2024 - Present</p>
-                <ul>
+                <ul class="desc">
                  
                     <li>Courses and skills learned: Algorithms, App Development</li>
                     <li>
@@ -153,7 +253,7 @@ Upcoming focus: Machine Learning, AI, Advanced Software Development</li>
                 <image class="eduProfile" src="logos/user-network-icon.png"></image>
                 <p class="nd">Wits University FYE Mentor</p>
                 <p class="period">2025-Present</p>
-              <ul id="expdesc">
+              <ul class="expdesc">
     <li>Mentored first-year Computer Science students by providing academic guidance, motivation, and support in adjusting to university life.</li>
     <li>Supported mentees through one-on-one guidance to improve problem-solving skills, time management, and effective communication.</li>
 </ul>
@@ -162,7 +262,7 @@ Upcoming focus: Machine Learning, AI, Advanced Software Development</li>
                     <div class="eduObject">
                 <p class="nd">AMLD Africa Student Volunteer</p>
                 <p class="period">26/01/2025 - 29/01/2025</p>
-                <ul id="expdesc">
+                <ul class="expdesc">
                     <li>Assisted with visitor registration and check-ins,<br> ensuring smooth and organized entry.</li>
 
 <li>Provided guidance and support to attendees, <br>answering questions and helping them navigate the event.</li>
@@ -176,6 +276,6 @@ Upcoming focus: Machine Learning, AI, Advanced Software Development</li>
          
        </div>
     </main>
-    
+    <script src="index.js"></script>
 </body>
 </html>

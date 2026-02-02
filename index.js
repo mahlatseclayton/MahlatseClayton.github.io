@@ -4,3 +4,6 @@ window.addEventListener('load', () => {
 function downloadCV(){
      window.open("files/Mahlatse_CV.pdf", "_blank");
 }
+function showContact(){
+    window.location.href="contact.html";
+}

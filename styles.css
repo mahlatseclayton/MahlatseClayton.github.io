@@ -326,9 +326,10 @@ body{
         opacity: 0;
     }
 }
+
 /* about page */
 #Experience{
-     background-color: white;
+     background-color: rgb(49, 47, 47);
     border-radius: 20px;
     display:flex;
     padding:9px;
@@ -343,8 +344,16 @@ body{
         justify-content: center;
         align-items: center;
 }
+#backlist li{
+    margin:15px;
+}
+#overId{
+    font-size: 23px;
+    color:#183df2;
+    text-decoration: underline;
+}
 #education{
-    background-color: white;
+ background-color: rgb(49, 47, 47);
     border-radius: 20px;
     
     display:flex;
@@ -358,9 +367,19 @@ body{
     font-weight: bold;
     color:#183df2;
 }
+.expdesc li{
+    color:white;
+}
+.period{
+    color:white;
+}
+.desc li{
+    color:white;
+}
 .nd{
     font-weight: bold;
     color:#183df2;
+    
   
 }
 .eduProfile{
@@ -386,6 +405,7 @@ body{
 .edu{
     width:500px ;
     overflow: break-word;
+    
    
 }
 .edu h1{
@@ -434,11 +454,75 @@ body{
     padding:14px;
  
 }
+.btnId:hover{
+    cursor: pointer;
+}
 #skillContainer{
     
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     display: flex;
+   
  
+}
+.line2{
+     height:8px;
+     width:100%;
+     border-radius: 20px;
+     background-color: white;
+
+}
+#line1{
+    width:78%;
+}
+#line3{
+    width:80%;
+}
+#line4{
+    width:69%;
+}
+#line5{
+    width:49%;
+}
+
+#line6{
+    width:75%;
+}
+#line7{
+    width:76%;
+}
+#line8{
+    width:65%;
+}
+#line9{
+    width:90%;
+}
+#line10{
+    width:60%;
+}
+#line11{
+    width:46%;
+}
+.line{
+    height:8px;
+    width:50%;
+    background-color: #183df2;
+    border-radius: 20px;
+}
+.combo{
+    display:flex;
+    flex-direction: column;
+    
+}
+.pId1{
+    display: flex;
+    width:600px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.percentageId{
+    display:flex;
+    flex-direction: column;
 }
 .c{
     
@@ -448,6 +532,21 @@ body{
     list-style-type: none;
 
 }
+#aboutDesc{
+    overflow: hidden;               
+  border-right: 2px solid black; 
+  white-space: nowrap;             
+  width: 0;                        
+  animation: aboutDesc 8s steps(60) forwards, blink 0.2s step-end infinite alternate;
+}
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: black; }
+}
+@keyframes aboutDesc {
+  0% { width: 0; }
+  100% { width: 60ch; } 
+    }
 
 #lnameId{
         color:rgb(230, 30, 30);
@@ -466,6 +565,23 @@ body{
     #picture:hover{
     height:350px;
     width:350px;
+
+}
+#skillContainer{
+    flex-direction: column;
+}
+#aboutDesc{
+    overflow:break-word;
+    font-size:13px;
+}
+#fnameId{
+    font-size:16px;
+}
+#lnameId{
+    font-size:16px;
+}
+.percentageId{
+    width:300px;
 
 }
 .edu{
@@ -584,6 +700,9 @@ body{
 .edu h1{
     font-size:20px;
     margin-left:73;
+}
+.pId1{
+    width:300px;
 }
 #expdesc{
     overflow: break-word;
