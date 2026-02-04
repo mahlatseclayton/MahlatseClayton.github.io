@@ -938,7 +938,8 @@ body{
     margin: 20px;
     display:flex;
     flex-direction: column;
-    flex-wrap: wrap;
+height:500px;
+
     align-items: center;
     margin-bottom: 0;
     justify-content: center;
