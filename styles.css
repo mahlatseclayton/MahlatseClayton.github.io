@@ -76,9 +76,12 @@
   
 
 }
+.clink1:hover{
+    box-shadow: #020a36;
+    border-radius: 12px;
+}
 .clink:hover{
-    width:40px;
-    height:40px;
+    transform:scale(1.05);
     border: #183df2 solid 2px;
     padding: 3px;
     border-radius: 12px;
@@ -205,6 +208,11 @@
 }
 .clink{
     height:30px;
+    width:30px;
+}
+.clink1{
+    height:30px;
+    margin:10px;
     width:30px;
 }
 #ln{
@@ -343,7 +351,7 @@ body{
 
 /* about page */
 #Experience{
-     background-color: rgb(49, 47, 47);
+     background-color:white;
     border-radius: 20px;
     display:flex;
     padding:9px;
@@ -354,6 +362,7 @@ body{
     flex-direction: column;
     border: 4px solid #183df2;
 }
+
 .eduObject{
         justify-content: center;
         align-items: center;
@@ -367,7 +376,7 @@ body{
     text-decoration: underline;
 }
 #education{
- background-color: rgb(49, 47, 47);
+ background-color:white;
     border-radius: 20px;
     
     display:flex;
@@ -377,15 +386,20 @@ body{
     flex-direction: column;
     border: 4px solid #183df2;
 }
+#education li{
+    color:black;
+}
+
 #t1{
     font-weight: bold;
     color:#183df2;
 }
 .expdesc li{
-    color:white;
+    color:black;
 }
 .period{
-    color:white;
+    color:#183df2;
+    font-weight: bold;
 }
 .desc li{
     color:white;
@@ -393,8 +407,6 @@ body{
 .nd{
     font-weight: bold;
     color:#183df2;
-    
-  
 }
 .eduProfile{
     width: 100px;
@@ -753,11 +765,7 @@ body{
 .lp{
     text-decoration: none;
 }
-.projectLogo{
-   
-    border-radius: 15px;
-    height:130px;
-}
+
 .projectContainer h1{
     color:#183df2;
     font-size: 18px;
@@ -787,9 +795,10 @@ body{
 }
 .liveBtn1{
     width:150px;
-    height:30px;
+    height:35px;
        color:white;
     font-weight: bold;
+    justify-content: center;
      border:2px solid #183df2;
     background-color: #183df2;
     border-radius: 20px;
@@ -851,13 +860,13 @@ body{
     color:#183df2;
 }
 .sLogo{
-    width:80px;
-    height:80px;
-
-    border-radius: 13px;
+    width:100px;
+    height:100px;
+    border-radius: 30px;
     padding: 12px;
     background-color: white;
 }
+
 
 .logoBox{
     justify-content: center;
@@ -867,7 +876,7 @@ body{
 .contactContainer{
     display:flex;
     flex-direction: column;
-    gap:25px;
+    gap:10px;
 
     flex-wrap: wrap;
     align-items: center;
@@ -885,9 +894,10 @@ body{
     width:100px;
 }
 .input{
-    background-color: rgba(219, 226, 231, 0.938);
+    background-color: white;
     border-radius: 15px;
     width:250px;
+    height:28px;
     border:3px solid #183df2;
 }
 #sendBtn{
@@ -906,10 +916,11 @@ body{
     background-color: #020a36;
 }
 .input:hover{
-    border-color:rgb(241, 10, 10);
+    border-color :#020a36;
 }
 #aboutW{
     color:white;
+    text-align: center;
     
 }
 .bs{
@@ -922,12 +933,16 @@ body{
     border-radius: 40px;
 
 }
+
 .cContainer{
     margin: 20px;
     display:flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 0;
     justify-content: center;
-    gap:30px;
+    gap:10px;
    
 }
 #g{
@@ -936,33 +951,27 @@ body{
 .cnText{
     color:aliceblue;
 }
-@keyframes fallSquare{
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-       transform: translateY(300px);
-    }
+
+#reachContainer{
+    display:flex;
+    justify-content: center;
+    gap:17px;
 }
-.square {
-    position: absolute;
-    width: 30px;        
-    height: 30px;
-    background-color: #17a9fd; 
-    opacity: 0.5;
-    top: -150px; 
-    animation-name: fallSquare;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+#ftitle{
+    color:white;
+    margin:10px;
+    text-align: center;
+}
+footer{
+    align-items: center;
+}
+#footerC{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10px;
 }
 
-
-
-#squareBack{
-    overflow: hidden;
-    height: 600px;
-    margin:0;
-    padding:0;
-    position: relative;
-    width:300px;
+#ct{
+    color:white;
 }
