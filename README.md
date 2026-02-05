@@ -28,7 +28,7 @@ The website is hosted using **GitHub Pages**.
 ## 🌍 Live Website
 The portfolio is live and accessible via GitHub Pages:
 
-🔗 **[Add Your GitHub Pages Link Here]**
+🔗 **https://mahlatseclayton.github.io/**
 
 ## 📦 Running Locally
 To run this website on your local machine:
