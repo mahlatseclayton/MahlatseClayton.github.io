@@ -1,6 +1,9 @@
 *{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 #title{
     display:inline-block;
       
@@ -236,7 +239,12 @@
     font-weight: bold;
 }
 #header{
+    position: sticky;
     margin:0px;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
 }
 
 body{
@@ -975,4 +983,11 @@ footer{
 
 #ct{
     color:white;
+}
+.navBar{
+   position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  background: white;
 }

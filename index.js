@@ -5,7 +5,7 @@ function downloadCV(){
      window.open("files/Mahlatse_CV.pdf", "_blank");
 }
 function showContact(){
-    window.location.href="contact.html";
+    window.location.href="#contacts";
 }
 function getUrl(){
     window.location.href="https://mentormenteeconnect2.web.app/"
