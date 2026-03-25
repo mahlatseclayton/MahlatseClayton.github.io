@@ -86,6 +86,8 @@
                 <a class="navigation" href="#about">About</a>
                 <a class="navigation" href="#projects">Projects</a>
                 <a class="navigation" href="#services">Services</a>
+                <a class="navigation" href="#certificates">Certificates</a>
+                <a class="navigation" href="journey.html">Journey Quiz</a>
                 <a class="navigation" href="#contacts">Contact</a>
             </div>
            
@@ -97,7 +99,7 @@
         <div id="intro">
            
             <div id="profile">
-                <image  src="images/profile.jpeg" id="picture" alt="This is my picture"></image>
+                <image  src="images/mahlatse.jpeg" id="picture" alt="This is my picture"></image>
             </div>
         
        
@@ -497,28 +499,67 @@ I value teamwork, creativity, and continuous learning, and aim to connect with l
         </div>
         </div>
       </section>
+
+      <section id="certificates">
+          <h1 class="subt"><span class="s">C</span>ertificates</h1>
+          <p style="text-align: center; margin-bottom: 50px; color: var(--text-muted); font-size: 16px;">
+              A collection of my recent certifications, leadership roles, and technical achievements.
+          </p>
+          <div class="certGrid">
+              <div class="serviceBox certBox">
+                  <img src="certificates/fba.png" alt="FBA Top Learner" class="certImg" onerror="this.src='logos/student-icon.png'">
+                  <h1 class="serviceTitle">FBA Top Learner Excellence Award</h1>
+                  <p class="sp">Awarded the title of Top Learner within the FBA Society—an esteemed recognition of outstanding academic performance, rigorous scientific inquiry, and sustained dedication to excellence in STEM disciplines.</p>
+              </div>
+              
+              <div class="serviceBox certBox">
+                  <img src="certificates/mentor.png" alt="Wits STPU Mentorship" class="certImg" onerror="this.src='logos/student-icon.png'">
+                  <h1 class="serviceTitle">Wits STPU Academic Mentorship</h1>
+                  <p class="sp">Served as a dedicated academic mentor in 2025. Successfully facilitated the transition and integration of first-year students into the university environment, providing critical mentorship and strategic guidance to foster academic success.</p>
+              </div>
+
+              <div class="serviceBox certBox">
+                  <img src="certificates/matlab.jpg" alt="MATLAB Certification" class="certImg" onerror="this.src='logos/student-icon.png'">
+                  <h1 class="serviceTitle">MATLAB Programming Professional</h1>
+                  <p class="sp">Achieved comprehensive certification in MATLAB programming. Demonstrated proficiency in computational mathematics, algorithm development, advanced data visualization, and engineering problem-solving.</p>
+              </div>
+
+              <div class="serviceBox certBox">
+                  <img src="certificates/amld_volunteer.jpg" alt="AMLD Africa Volunteer" class="certImg" onerror="this.src='logos/student-icon.png'">
+                  <h1 class="serviceTitle">AMLD Africa Event Coordinator</h1>
+                  <p class="sp">Key contributor to the organization and execution of the globally recognized AMLD Africa conference. Coordinated event logistics, managed attendee interactions, and ensured the seamless delivery of high-impact AI/ML sessions.</p>
+              </div>
+
+              <div class="serviceBox certBox">
+                  <img src="certificates/amld_atendee.jpg" alt="AMLD Africa Attendee" class="certImg" onerror="this.src='logos/student-icon.png'">
+                  <h1 class="serviceTitle">AMLD Africa Technical Participant</h1>
+                  <p class="sp">Active participant at the prestigious AMLD Africa conference. Engaged deeply with cutting-edge advancements in Artificial Intelligence and Machine Learning, absorbing transformative technological frameworks from industry leaders.</p>
+              </div>
+          </div>
+      </section>
+
       <section id="contacts">
                             <div class="cContainer">
                        <h2 id="ct">Reach Out, Let’s Talk Tech</h2>
-                  <div id="reachContainer">
-                            <a href="https://wa.me/27752830167"class="socialLinks">
-                    <image class="clink1" src="logos/whatsapp-color-icon.png" alt="This is a link to my social accounts"></image>
-                    </a>
-                                        <a  href="https://github.com/mahlatseclayton" class="socialLinks">
-                    <image id="git" class="clink1" src="logos/github-icon.png" alt="This is a link to my social accounts"></image>
-                    </a>
-                                        <a href="https://www.linkedin.com/in/mahlatse-maredi-a74650302/" class="socialLinks">
-                    <image class="clink1" src="logos/linkedin-app-icon.png" alt="This is a link to my social accounts"></image>
-                    </a>
-                                        <a href="mailto:mahlatseclayton1@gmail.com" class="socialLinks">
-                    <image class="clink1" src="logos/gmail-icon.png" alt="This is a link to my social accounts" ></image>
-                    </a>
-                    <a class="socialLiinks" href="tel:0752830167">
-                        <image class="clink1" src="logos/call.png" alt="This is a link to my social accounts" ></image>
-                    </a>
-                        </div>
+                  <form action="https://formsubmit.co/mahlatseclayton1@gmail.com" method="POST" id="contactForm">
+                      <!-- Direct subject line for recruiters as requested -->
+                      <input type="hidden" name="_subject" value="-Recruiter cachy line">
+                      <input type="hidden" name="_captcha" value="false">
+                      <!-- Removing FormSubmit branding and redirecting to default Thank You page nicely -->
+                      <input type="hidden" name="_template" value="table">
                       
-                        </div>
+                      <div class="inputGroup">
+                          <input type="text" name="name" required placeholder="Your Name or Company">
+                      </div>
+                      <div class="inputGroup">
+                          <input type="email" name="email" required placeholder="Your Email Address">
+                      </div>
+                      <div class="inputGroup">
+                          <textarea name="message" required placeholder="Hello! I have a great opportunity to discuss..."></textarea>
+                      </div>
+                      <button type="submit" class="submitBtn">Send Message</button>
+                  </form>
+                               </div>
             <footer>
     <div id="footerC">
             <small id="ftitle">&copy; 2026 Mahlatse Maredi all copyrights reserved.</small>

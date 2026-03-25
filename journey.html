@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Quiz | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .journey-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 40px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 450px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, rgba(14,20,34,0.9), rgba(139,92,246,0.2));
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flip-card-front h2 {
+            font-size: 80px;
+            font-family: 'Outfit', sans-serif;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .hint {
+            color: var(--accent-1);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .flip-card-back {
+            background: var(--bg-glass);
+            transform: rotateY(180deg);
+            padding: 0;
+            justify-content: flex-start;
+        }
+
+        .flip-card-back img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-1);
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .card-content h3 {
+            color: var(--accent-1);
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .guess-box {
+            background: var(--bg-glass);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-1);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
+            text-align: center;
+            transform: translateY(20px);
+            transition: 0.3s;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-overlay.active .guess-box {
+            transform: translateY(0);
+        }
+
+        .guess-box h2 {
+            margin-bottom: 30px;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+        }
+
+        .guess-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .guess-btn:hover {
+            background: var(--gradient-main);
+            border-color: transparent;
+            transform: translateX(5px);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            z-index: 3000;
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+        }
+        .shake { animation: shake 0.4s ease-in-out; }
+
+        .loader-circle {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .confetti-ball {
+            position: fixed;
+            top: -20px;
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="circles-bg">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <header id="header">
+      <nav class="navBar">
+        <div id="bar">
+            <div id="ln">
+                <img id="logo" src="logos/logo.jpg" alt="logo">
+                <h1 id="title">CLAYTON</h1>
+            </div>
+            <div id="navContainer">
+                <a class="navigation" href="index.html#home">Home</a>
+                <a class="navigation" href="index.html#about">About</a>
+                <a class="navigation" href="index.html#projects">Projects</a>
+                <a class="navigation" href="index.html#services">Services</a>
+                <a class="navigation active" href="journey.html">Journey Quiz</a>
+                <a class="navigation" href="index.html#contacts">Contact</a>
+            </div>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+        <section id="gamification" style="padding-top: 150px; min-height: 80vh;">
+            <h1 class="subt"><span class="s">J</span>ourney Quiz</h1>
+            <p style="text-align: center; margin-bottom: 20px; color: var(--text-muted); font-size: 16px;">
+                Can you guess the chronological stages of my academic and professional life? Click a card to guess!
+            </p>
+            
+            <div class="journey-container" id="journeyGrid">
+                <!-- Primary -->
+                <div class="flip-card" onclick="openModal('primary', this)" data-solved="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>?</h2>
+                            <div class="hint">Phase 1</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/primary1.jpg" onerror="this.src='logos/student-icon.png'" alt="Primary">
+                            <div class="card-content">
+                                <h3>Primary School</h3>
+                                <p>Molapalama Combined School (Grades 7–9). Laid a robust foundation in core academics. Rose to regional prominence by dominating the prestigious Astro Quiz 2018, ultimately representing Mpumalanga at the national finals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High School -->
+                <div class="flip-card" onclick="openModal('high', this)" data-solved="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>?</h2>
+                            <div class="hint">Phase 2</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/high1.jpg" onerror="this.src='logos/student-icon.png'" alt="High School">
+                            <div class="card-content">
+                                <h3>High School</h3>
+                                <p>Mokebe Senior Secondary School (Grades 10–12). Maintained an exemplary academic record, mastering complex mathematics and physical sciences. Cultivated the elite analytical mindset required for higher education.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uni -->
+                <div class="flip-card" onclick="openModal('uni', this)" data-solved="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>?</h2>
+                            <div class="hint">Phase 3</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="images/uni2.JPEG" onerror="this.src='logos/student-icon.png'" alt="University">
+                            <div class="card-content">
+                                <h3>University</h3>
+                                <p>Wits University – BSc Computer Science. Currently pursuing an elite tech degree. Consistently pushing boundaries in artificial intelligence, algorithms, and software development at one of the continent's top institutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work -->
+                <div class="flip-card" onclick="openModal('work', this)" data-solved="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>?</h2>
+                            <div class="hint">Phase 4</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div style="width: 100%; height: 180px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--accent-1), var(--accent-3)); border-bottom: 2px solid var(--accent-1);">
+                                <h3 style="color: white; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 16px; text-align: center;">Hire Me !</h3>
+                            </div>
+                            <div class="card-content">
+                                <h3>Professional Career</h3>
+                                <p>Upcoming Opportunity. Actively seeking dynamic roles to leverage my software engineering frameworks, machine learning expertise, and relentless problem-solving skills in a high-impact professional environment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <section id="rating-sector" style="padding: 100px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 50px;">
+                
+                <!-- Community Bar -->
+                <div style="width: 100%; max-width: 450px; margin-bottom: 45px; text-align: left; animation: slideUp 1s ease-out forwards;">
+                    <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px;">Global Community Average</h4>
+                    <div style="width: 100%; background: rgba(255,255,255,0.05); height: 8px; border-radius: 10px; overflow: hidden; border: 1px solid var(--glass-border); position: relative;">
+                        <div id="community-progress" style="width: 0%; height: 100%; background: linear-gradient(90deg, #8b5cf6, #d946ef); border-radius: 10px; transition: 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+                    </div>
+                    <p style="color: var(--text-main); font-weight: 700; margin-top: 10px; font-size: 18px; font-family: 'Outfit';"><span id="community-value">4.9</span> / 5 <span id="community-meta" style="font-weight: 400; color: var(--text-muted); font-size: 12px; margin-left:10px;">(Global Average)</span></p>
+                </div>
+
+                <!-- Personal Bar -->
+                <div style="width: 100%; max-width: 450px; text-align: left; animation: slideUp 1.2s ease-out forwards;">
+                    <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px;">Your Selection</h4>
+                    <div style="width: 100%; background: rgba(255,255,255,0.05); height: 16px; border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); position: relative; cursor: pointer;" id="rating-bar-container">
+                        <div id="rating-progress" style="width: 0%; height: 100%; background: var(--gradient-main); border-radius: 20px; transition: 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+                        <p id="rating-value" style="color: var(--accent-1); font-weight: 700; font-family: 'Outfit'; font-size: 22px;">0.0 / 5</p>
+                        <p style="color: var(--text-muted); font-size: 11px; text-transform: uppercase;">Click bar to vote</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Modal for Guessing -->
+    <div id="guessModal" class="modal-overlay">
+        <div class="guess-box" id="guessBoxElement">
+            <h2>Select the correct stage:</h2>
+            <button class="guess-btn" onclick="submitGuess('primary')">Primary School</button>
+            <button class="guess-btn" onclick="submitGuess('high')">High School</button>
+            <button class="guess-btn" onclick="submitGuess('uni')">University</button>
+            <button class="guess-btn" onclick="submitGuess('work')">Work / Career</button>
+            <button class="guess-btn" style="background: transparent; border: none; margin-top: 20px; color: var(--text-muted);" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Incorrect stage! Try again.</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('journeyGrid');
+            const cards = Array.from(grid.children);
+            
+            // Randomize order using Fisher-Yates
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            
+            // Re-append in random order
+            cards.forEach(card => grid.appendChild(card));
+        });
+
+        let currentTargetId = '';
+        let currentCardElement = null;
+
+        function openModal(correctAnswer, cardElement) {
+            // Don't open if already solved
+            if (cardElement.getAttribute('data-solved') === 'true') return;
+            
+            currentTargetId = correctAnswer;
+            currentCardElement = cardElement;
+            document.getElementById('guessModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('guessModal').classList.remove('active');
+            // Element variables will be cleared in submitGuess after use
+        }
+
+        function submitGuess(guess) {
+            if (guess === currentTargetId) {
+                // Correct answer selected
+                const card = currentCardElement; // Keep a local reference
+                const target = currentTargetId;
+
+                // Close modal and show celebration 
+                closeModal();
+                triggerConfetti();
+
+                if (card) {
+                    card.classList.add('flipped');
+                    card.setAttribute('data-solved', 'true');
+                    
+                    const innerCard = card.querySelector('.flip-card-inner');
+                    const navigateToDetails = () => {
+                        console.log("Auto-redirecting to details.html?stage=" + target);
+                        window.location.href = 'details.html?stage=' + target;
+                    };
+                    
+                    if (innerCard) {
+                        innerCard.addEventListener('transitionend', navigateToDetails, { once: true });
+                    }
+                    setTimeout(navigateToDetails, 3000); // Fail-safe fallback
+                }
+                
+                // Clear globals for next selection
+                currentTargetId = '';
+                currentCardElement = null;
+            } else {
+                // Incorrect
+                const guessBox = document.getElementById('guessBoxElement');
+                guessBox.classList.add('shake');
+                
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    guessBox.classList.remove('shake');
+                }, 400);
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        function triggerConfetti() {
+            const colors = ['#00F2FE', '#4FACFE', '#8B5CF6', '#FACC15', '#10B981'];
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-ball';
+                
+                // Randomize properties
+                const size = Math.random() * 10 + 5; // 5 to 15px
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's'; // 2 to 4 seconds
+                confetti.style.animationDelay = (Math.random() * 0.5) + 's';
+                
+                // Add some rotation spin
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+                document.body.appendChild(confetti);
+
+                // Clean up DOM
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const bar = document.getElementById('rating-bar-container');
+            const progress = document.getElementById('rating-progress');
+            const communityProgress = document.getElementById('community-progress');
+            const communityValText = document.getElementById('community-value');
+            const valText = document.getElementById('rating-value');
+            
+            // Simulation Constants
+            const baseAvg = 4.9;
+            const mockCount = 80; // Small enough to see the bar nudge!
+
+            const calculateGlobalImpact = (userScore) => {
+                const newAvg = ((baseAvg * mockCount) + parseFloat(userScore)) / (mockCount + 1);
+                const finalAvg = newAvg.toFixed(2);
+                
+                // Update Community UI with a slight delay
+                setTimeout(() => {
+                    if (communityProgress) communityProgress.style.width = (finalAvg * 20) + '%';
+                    if (communityValText) communityValText.innerText = finalAvg;
+                }, 300);
+            };
+
+            // 1. Initial Load
+            setTimeout(() => {
+                const saved = localStorage.getItem('journeyRating');
+                if(saved) {
+                    calculateGlobalImpact(saved);
+                    if (progress) progress.style.width = (saved * 20) + '%';
+                    if (valText) valText.innerText = `${saved} / 5`;
+                } else {
+                    if (communityProgress) communityProgress.style.width = (baseAvg * 20) + '%';
+                    if (communityValText) communityValText.innerText = baseAvg;
+                }
+            }, 500);
+
+            if (bar) {
+                bar.onclick = (e) => {
+                    const rect = bar.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const pct = Math.min(Math.max((x / rect.width) * 100, 5), 100);
+                    const score = (pct / 20).toFixed(1);
+                    
+                    // Update Personal
+                    progress.style.width = pct + '%';
+                    valText.innerText = `${score} / 5`;
+                    localStorage.setItem('journeyRating', score);
+                    
+                    // Update Global Impact
+                    calculateGlobalImpact(score);
+                };
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Details | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .details-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 100px 5%;
+        }
+
+        .details-card {
+            display: flex;
+            flex-direction: row;
+            background: var(--bg-glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            max-width: 1100px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .details-img-container {
+            flex: 1;
+            max-width: 50%;
+            position: relative;
+        }
+
+        .details-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .details-content {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .details-title {
+            font-size: 42px;
+            font-family: 'Outfit', sans-serif;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .details-desc {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 50px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-main);
+            border: 1px solid var(--glass-highlight);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .back-btn:hover {
+            background: var(--gradient-main);
+            border-color: transparent;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
+            color: white;
+        }
+        
+        .error-icon {
+            filter: invert(0.8) sepia(1) hue-rotate(180deg) saturate(3) opacity(0.8);
+            object-fit: contain !important;
+            padding: 40px;
+        }
+
+        @media(max-width: 900px) {
+            .details-card {
+                flex-direction: column;
+            }
+            .details-img-container {
+                max-width: 100%;
+                height: 350px;
+            }
+            .details-content {
+                padding: 40px 30px;
+            }
+            .details-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circles-bg">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <header id="header">
+      <nav class="navBar">
+        <div id="bar">
+            <div id="ln">
+                <img id="logo" src="logos/logo.jpg" alt="logo">
+                <h1 id="title">CLAYTON</h1>
+            </div>
+            <div id="navContainer">
+                <a class="navigation" href="index.html#home">Home</a>
+                <a class="navigation" href="index.html#about">About</a>
+                <a class="navigation" href="index.html#projects">Projects</a>
+                <a class="navigation" href="index.html#services">Services</a>
+                <a class="navigation" href="index.html#certificates">Certificates</a>
+                <a class="navigation active" href="journey.html">Journey Quiz</a>
+                <a class="navigation" href="index.html#contacts">Contact</a>
+            </div>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+        <div class="details-container">
+            <div class="details-card">
+                <div class="details-img-container">
+                    <img id="stage-img" src="logos/student-icon.png" alt="Stage Image" onerror="this.onerror=null; this.classList.add('error-icon'); this.src='logos/student-icon.png';">
+                </div>
+                <div class="details-content">
+                    <h1 id="stage-title" class="details-title">Loading...</h1>
+                    <p id="stage-desc" class="details-desc">Fetching details...</p>
+                    <a href="journey.html" class="back-btn">← Back to Journey</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Details page loaded");
+            const urlParams = new URLSearchParams(window.location.search);
+            const stage = urlParams.get('stage');
+            console.log("Current stage:", stage);
+            
+            const stageData = {
+                'primary': {
+                    title: 'Primary School Education',
+                    images: ['images/primary1.jpg', 'images/primary2.jpg'],
+                    desc: 'Molapalama Combined School (Grades 7–9). Laid a robust foundation in core academics and scientific inquiry. Rose to regional prominence by dominating the prestigious Astro Quiz 2018, ultimately representing Mpumalanga at the national finals.'
+                },
+                'high': {
+                    title: 'High School Excellence',
+                    images: ['images/high1.jpg', 'images/high2.jpg'],
+                    desc: 'Mokebe Senior Secondary School (Grades 10–12). Maintained an exemplary academic record, mastering complex mathematics and physical sciences. Cultivated the elite analytical mindset required for higher education.'
+                },
+                'uni': {
+                    title: 'University – Elite Tech Degree',
+                    images: ['images/uni2.JPEG', 'images/uni1.JPEG'],
+                    desc: 'Wits University – BSc Computer Science. Currently pursuing an elite degree in computer science. Consistently pushing boundaries in artificial intelligence, advanced algorithms, and full-stack software development at one of the continent\'s top institutions.'
+                },
+                'work': {
+                    title: 'Professional Career',
+                    images: [],
+                    desc: 'Upcoming Opportunity. Actively seeking dynamic roles to leverage my software engineering frameworks, machine learning expertise, and relentless problem-solving skills in a high-impact professional environment.'
+                }
+            };
+            
+            const data = stageData[stage];
+            const imgContainer = document.querySelector('.details-img-container');
+            
+            if (data) {
+                document.getElementById('stage-title').innerText = data.title;
+                document.getElementById('stage-desc').innerText = data.desc;
+                
+                if (stage === 'work') {
+                    imgContainer.innerHTML = '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--accent-1), var(--accent-3)); min-height: 350px; border-radius: 20px;"><h2 style="color: white; text-align: center; font-family: Outfit; font-size: 32px; padding: 20px; line-height: 1.5;"><br><br>Hire Me! </h2></div>';
+                } else if (data.images && data.images.length > 0) {
+                    let imagesHTML = '';
+                    data.images.forEach(img => {
+                        imagesHTML += `<img src="${img}" alt="Stage Image" style="margin-bottom: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover; width: 100%;" onerror="this.onerror=null; this.classList.add('error-icon'); this.src='logos/student-icon.png';">`;
+                    });
+                    imgContainer.innerHTML = imagesHTML;
+                    imgContainer.style.cssText = 'overflow-y: auto; max-height: 80vh; display: flex; flex-direction: column; scrollbar-width: none; ms-overflow-style: none; padding-right: 15px;';
+                }
+            } else {
+                document.getElementById('stage-title').innerText = "Stage Not Found";
+                document.getElementById('stage-desc').innerText = "Whoops! It looks like you stumbled upon a missing stage of the journey. Please head back and select a valid era.";
+                imgContainer.innerHTML = '<img id="stage-img" src="logos/student-icon.png" class="error-icon" style="width:100%; height:auto;">';
+            }
+        });
+    </script>
+</body>
+</html>

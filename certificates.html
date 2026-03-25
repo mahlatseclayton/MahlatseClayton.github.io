@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .certBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .certBox img[src*="student-icon"] {
+            filter: invert(0.8) sepia(1) hue-rotate(180deg) saturate(3) opacity(0.8);
+            width: 80px;
+            object-fit: contain;
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="circles-bg">
+        <!-- Reusing standard background spanning elements -->
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <header id="header">
+      <nav class="navBar">
+        <div id="bar">
+            <div id="ln">
+                <img id="logo" src="logos/logo.jpg" alt="logo">
+                <h1 id="title">CLAYTON</h1>
+            </div>
+            <div id="navContainer">
+                <a class="navigation" href="index.html#home">Home</a>
+                <a class="navigation" href="index.html#about">About</a>
+                <a class="navigation" href="index.html#projects">Projects</a>
+                <a class="navigation" href="index.html#services">Services</a>
+                <a class="navigation active" href="certificates.html">Certificates</a>
+                <a class="navigation" href="journey.html">Journey Quiz</a>
+                <a class="navigation" href="index.html#contacts">Contact</a>
+            </div>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+        <section id="certificates" style="padding-top: 150px; min-height: 80vh;">
+            <h1 class="subt"><span class="s">C</span>ertificates</h1>
+            <p style="text-align: center; margin-bottom: 50px; color: var(--text-muted); font-size: 16px;">
+                A collection of my recent certifications, leadership roles, and technical achievements.
+            </p>
+            <div class="certGrid">
+                <div class="serviceBox certBox">
+                    <img src="certificates/fba.png" alt="FBA Top Learner" class="certImg" onerror="this.src='logos/student-icon.png'">
+                    <h1 class="serviceTitle">FBA Top Learner Excellence Award</h1>
+                    <p class="sp">Awarded the title of Top Learner within the FBA Society—an esteemed recognition of outstanding academic performance, rigorous scientific inquiry, and sustained dedication to excellence in STEM disciplines.</p>
+                </div>
+                
+                <div class="serviceBox certBox">
+                    <img src="certificates/mentor.png" alt="Wits STPU Mentorship" class="certImg" onerror="this.src='logos/student-icon.png'">
+                    <h1 class="serviceTitle">Wits STPU Academic Mentorship</h1>
+                    <p class="sp">Served as a dedicated academic mentor in 2025. Successfully facilitated the transition and integration of first-year students into the university environment, providing critical mentorship and strategic guidance to foster academic success.</p>
+                </div>
+
+                <div class="serviceBox certBox">
+                    <img src="certificates/matlab.jpg" alt="MATLAB Certification" class="certImg" onerror="this.src='logos/student-icon.png'">
+                    <h1 class="serviceTitle">MATLAB Programming Professional</h1>
+                    <p class="sp">Achieved comprehensive certification in MATLAB programming. Demonstrated proficiency in computational mathematics, algorithm development, advanced data visualization, and engineering problem-solving.</p>
+                </div>
+
+                <div class="serviceBox certBox">
+                    <img src="certificates/amld_volunteer.jpg" alt="AMLD Africa Volunteer" class="certImg" onerror="this.src='logos/student-icon.png'">
+                    <h1 class="serviceTitle">AMLD Africa Event Coordinator</h1>
+                    <p class="sp">Key contributor to the organization and execution of the globally recognized AMLD Africa conference. Coordinated event logistics, managed attendee interactions, and ensured the seamless delivery of high-impact AI/ML sessions.</p>
+                </div>
+
+                <div class="serviceBox certBox">
+                    <img src="certificates/amld_atendee.jpg" alt="AMLD Africa Attendee" class="certImg" onerror="this.src='logos/student-icon.png'">
+                    <h1 class="serviceTitle">AMLD Africa Technical Participant</h1>
+                    <p class="sp">Active participant at the prestigious AMLD Africa conference. Engaged deeply with cutting-edge advancements in Artificial Intelligence and Machine Learning, absorbing transformative technological frameworks from industry leaders.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacts" style="min-height: auto; padding: 20px 0;">
+            <footer>
+                <div id="footerC">
+                    <small id="ftitle">&copy; 2026 Mahlatse Maredi all copyrights reserved.</small>
+                </div>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
