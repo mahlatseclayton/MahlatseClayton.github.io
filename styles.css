@@ -235,15 +235,7 @@ section {
     font-size: 19px;
     line-height: 1.8;
     color: var(--text-muted);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 1s ease 0.2s;
     margin-bottom: 45px;
-}
-
-#phrase.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 #name {
